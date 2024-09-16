@@ -1,0 +1,2 @@
+Error de base de datos: SQLSTATE[22007]: Invalid datetime format: 7 ERROR:  invalid input syntax for type date: ""
+CONTEXT:  unnamed portal parameter $3 = ''

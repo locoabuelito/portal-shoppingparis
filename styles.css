@@ -1,0 +1,365 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgb(36, 36, 37);
+}
+
+
+.img-header {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+
+.container .img-header img {
+    object-fit: cover;
+    width: 250px;
+    height: 150px;
+}
+
+.container {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.container header {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* .container .form {
+    margin-top: 30px;
+} */
+
+.form {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form .result-box {
+    height: auto;
+    width: auto;
+    z-index: 10;
+    border-radius: 5px;
+    color: #707070;
+}
+
+.form .result-box-state .result-box-city {
+    height: 100px;
+    width: auto;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    z-index: 10;
+    border-radius: 5px;
+    color: #707070;
+}
+
+.form .result-box-city {
+    height: 100px;
+    width: auto;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    z-index: 10;
+    border-radius: 5px;
+    color: #707070;
+}
+
+.form .result-box ul {
+    padding: 15px 10px;
+    margin-top: -10px;
+    width: 100%;
+    border-radius: 5px;
+    z-index: 10;
+
+}
+
+.form .result-box-state ul {
+    padding: 15px 10px;
+    margin-top: -10px;
+    width: 100%;
+    border-radius: 5px;
+    z-index: 10;
+
+}
+
+.form .result-box-city ul {
+    padding: 15px 10px;
+    margin-top: -10px;
+    width: 100%;
+    border-radius: 5px;
+    z-index: 10;
+
+}
+
+.form .result-box ul li {
+    list-style: none;
+    padding: 15px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #000;
+    margin-top: 8px;
+    padding: 0 5px;
+}
+
+
+.form .result-box-state ul li {
+    list-style: none;
+    padding: 15px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #000;
+    margin-top: 8px;
+    padding: 0 5px;
+}
+
+.form .result-box-city ul li {
+    list-style: none;
+    padding: 15px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #000;
+    margin-top: 8px;
+    padding: 0 5px;
+}
+
+.form .result-box ul li:hover {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background-color: #707070;
+    border-radius: 5px;
+    font-weight: bold;
+    border-color: #09090b;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.form .result-box-state ul li:hover {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background-color: #707070;
+    border-radius: 5px;
+    font-weight: bold;
+    border-color: #09090b;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.form .result-box-city ul li:hover {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background-color: #707070;
+    border-radius: 5px;
+    font-weight: bold;
+    border-color: #09090b;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.input-box label {
+    color: #000000;
+}
+
+.form :where(.input-box input) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    border-color: #09090b;
+}
+
+.form .column {
+    display: flex;
+    column-gap: 15px;
+}
+
+.form .gender-box {
+    margin-top: 20px;
+}
+
+.gender-box h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.form :where(.gender-option, .gender) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+}
+
+.form .gender {
+    column-gap: 5px;
+}
+
+.gender input {
+    accent-color: rgb(17, 17, 19);
+}
+
+.form :where(.gender input, .gender label) {
+    cursor: pointer;
+}
+
+.gender label {
+    color: #707070;
+}
+
+.address :where(input, .select-box) {
+    margin-top: 15px;
+}
+
+.select-box select {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 1rem;
+}
+
+.form .button {
+    height: 55px;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgb(2, 2, 2);
+}
+
+.form .button:hover {
+    background: rgb(57, 57, 59);
+}
+
+
+
+.form .container-policy {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    /* Centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Responsive width */
+    max-width: 500px;
+    /* Maximum width */
+    border-radius: 8px;
+}
+
+/* The Close Button */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Buttons */
+.modal-buttons {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.modal-btn {
+    background: rgb(2, 2, 2);
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.modal-btn:hover {
+    background: rgb(57, 57, 59);
+}
+
+/*Responsive*/
+@media screen and (max-width: 500px) {
+    .form .column {
+        flex-wrap: wrap;
+    }
+
+    .form :where(.gender-option, .gender) {
+        row-gap: 15px;
+    }
+}
