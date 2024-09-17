@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
             result_box.style.display = 'block';
             const matches = await buscarPaises(searchTerm);
             if (matches.length == 0) {
-                alert(`El ${searchTerm} no pertenece a un Pais`)
+                alert(`${searchTerm} no pertenece a un Pais`)
+                result_box.style.display = 'none';
                 pais.value = '';
             } else {
                 displayBusquedaPais(matches);
@@ -71,8 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
             result_box_state.style.display = 'block';
             const matches = await buscarEstado(countryId, searchState); // Pasar el ID del país y el texto del estado
             if (matches.length == 0) {
-                alert(`El ${searchState} no pertenece a un Estado`)
+                alert(`${searchState} no pertenece a un Estado`)
                 estado.value = '';
+                result_box_state.style.display = 'none'
             } else {
                 displayBusquedaEstado(matches);
             }

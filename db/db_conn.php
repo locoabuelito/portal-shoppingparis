@@ -45,7 +45,7 @@ function conectarPgSQL() {
     }
 }
 
-function insertar ($fullname, $email, $fec_nacimiento, $sexo, $pais, $estado, $ciudad, $mac_user, $mac_ap){
+function insertar ($fullname, $email, $fec_nacimiento, $sexo, $pais_name, $estado_name, $ciudad_name, $mac_user, $mac_ap){
     // Llamar a la función para conectar
     $DB_TABLES              = $_ENV['DB_TABLES'];   
     $DB_USER_FULL_NAME      = $_ENV['COLUMNS_USERS_FULL_NAME'];  
@@ -61,25 +61,23 @@ function insertar ($fullname, $email, $fec_nacimiento, $sexo, $pais, $estado, $c
     
     try {
         $conexion = conectarPgSQL();
-        //echo "Conexión exitosa a la base de datos PostgreSQL. Preparando datos para insertar";
 
         $sql = "INSERT INTO $DB_TABLES ($DB_USER_FULL_NAME, $DB_USER_EMAIL, $DB_USER_DATE_LOGIN, $DB_USER_FEC_NACIMI, $DB_USER_SEXO, 
         $DB_USER_PAIS, $DB_USER_ESTADO, $DB_USER_CIUDAD, $DB_USER_MAC_USER, $DB_USER_MAC_AP) 
-        VALUES (:fullname, :email, CURRENT_TIMESTAMP, :fec_nacimiento, :sexo, :pais, :estado, :ciudad, :mac_user, :mac_ap);";
+        VALUES (:fullname, :email, CURRENT_TIMESTAMP, :fec_nacimiento, :sexo, :pais_name, :estado_name, :ciudad_name, :mac_user, :mac_ap);";
 
         $stmt = $conexion->prepare($sql);
         $stmt->bindValue(':fullname', $fullname, PDO::PARAM_STR);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->bindValue(':fec_nacimiento', $fec_nacimiento, PDO::PARAM_STR);
         $stmt->bindValue(':sexo', $sexo, PDO::PARAM_STR);
-        $stmt->bindValue(':pais', $pais, PDO::PARAM_STR);
-        $stmt->bindValue(':estado', $estado, PDO::PARAM_STR);
-        $stmt->bindValue(':ciudad', $ciudad, PDO::PARAM_STR);
+        $stmt->bindValue(':pais_name', $pais_name, PDO::PARAM_STR);
+        $stmt->bindValue(':estado_name', $estado_name, PDO::PARAM_STR);
+        $stmt->bindValue(':ciudad_name', $ciudad_name, PDO::PARAM_STR);
         $stmt->bindValue(':mac_user', $mac_user, PDO::PARAM_STR);
         $stmt->bindValue(':mac_ap', $mac_ap, PDO::PARAM_STR);
 
         $stmt->execute();
-        //echo "Datos insertados correctamente.";
         
     } catch (PDOException $e) {
         // Capturar error específico de PDO y mostrar mensaje personalizado

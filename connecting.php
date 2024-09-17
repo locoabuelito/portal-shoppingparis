@@ -21,9 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$pais            = isset($_POST['pais']) ? $_POST['pais'] : '';
-$estado          = isset($_POST['estado']) ? $_POST['estado'] : '';
-$ciudad          = isset($_POST['ciudad']) ? $_POST['ciudad'] : '';
+$pais            = isset($_POST['pais_name']) ? $_POST['pais_name'] : '';
+$estado          = isset($_POST['estado_name']) ? $_POST['estado_name'] : '';
+$ciudad          = isset($_POST['ciudad_name']) ? $_POST['ciudad_name'] : '';
 $mac_user        = isset($_SESSION['id']) ? $_SESSION['id'] : '';
 $mac_ap          = isset($_SESSION['ap']) ? $_SESSION['ap'] : '';
 
@@ -49,7 +49,6 @@ $auth_result = $unifi_connection->authorize_guest($mac_user, $duration, $up = $s
 
 insertar($fullname, $email, $fec_nacimiento, $sexo, $pais, $estado, $ciudad, $mac_user, $mac_ap);
 
-
 ?>
 
 <!doctype html>
@@ -61,7 +60,7 @@ insertar($fullname, $email, $fec_nacimiento, $sexo, $pais, $estado, $ciudad, $ma
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- <meta http-equiv="refresh" content="0;url=https:/www.shoppingparis.com.py/" /> -->
 </head>
-    <script>
+    <!-- <script>
         window.location.replace("https:/www.shoppingparis.com.py/");
-    </script>
+    </script> -->
 </html>
