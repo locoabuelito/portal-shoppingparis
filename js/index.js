@@ -47,12 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     pais.addEventListener('keyup', async (e) => {
-        const searchTerm = e.target.value;
+        let searchTerm = e.target.value;
         if (searchTerm) {
             result_box.style.display = 'block';
             const matches = await buscarPaises(searchTerm);
-            // console.log(matches); // Mostrar los países que coinciden con la búsqueda
-            displayBusquedaPais(matches);
+            if (matches.length == 0) {
+                alert(`El ${searchTerm} no pertenece a un Pais`)
+                pais.value = '';
+            } else {
+                displayBusquedaPais(matches);
+            }
 
         } else {
             result_box.innerHTML = '';
@@ -63,23 +67,36 @@ document.addEventListener('DOMContentLoaded', () => {
     estado.addEventListener('keyup', async (e) => {
         const searchState = e.target.value;
         let countryId = pais.getAttribute('data-id');
-        if (searchState && countryId) {
+        if (searchState || countryId) {
             result_box_state.style.display = 'block';
             const matches = await buscarEstado(countryId, searchState); // Pasar el ID del país y el texto del estado
-            displayBusquedaEstado(matches);
+            if (matches.length == 0) {
+                alert(`El ${searchState} no pertenece a un Estado`)
+                estado.value = '';
+            } else {
+                displayBusquedaEstado(matches);
+            }
         } else {
             result_box_state.innerHTML = '';
         }
     })
 
     ciudad.addEventListener('keyup', async (e) => {
+        const estado = document.getElementById('estado');
         const searchCity = e.target.value;
-        let = StateId = estado.getAttribute('data-id')
-        if (searchCity && StateId) {
+        let StateId = estado.getAttribute('data-id')
+        if (searchCity || StateId) {
             result_box_city.style.display = 'block';
             const matches = await buscarCiudad(StateId, searchCity);
-            displayBusquedaCiudad(matches);
+            if (matches.length == 0) {
+                result_box_city.style.display = 'none';
+                alert(`${searchCity} no pertenece a una ciudad del Estado seleccionado`)
+                ciudad.value = '';
+            } else {
+                displayBusquedaCiudad(matches);
+            }
         } else {
+            result_box_city.style.display = 'none';
             result_box_city.innerHTML = '';
         }
     })
@@ -128,7 +145,6 @@ async function buscarEstado(country_id, state_name) {
         matches = stateArray.filter(state =>
             state.id_country === parseInt(country_id) && state.name.toLowerCase().includes(state_name.toLowerCase())
         );
-
         displayBusquedaEstado(matches)
         return matches;
 
@@ -166,9 +182,14 @@ async function buscarCiudad(state_id, state_name) {
 }
 
 function displayBusquedaPais(params) {
+    const pais = document.getElementById('pais');
     const result_box = document.querySelector('.result-box')
     const contenido = params.map((list) => {
-        return `<li onclick=selectPais(this) data-id="${list.id}" data-name="${list.name}">${list.name}</li>`;
+        if (list.name == pais.value) {
+            return pais.setAttribute('data-id', list.id);
+        } else {
+            return `<li onclick=selectPais(this) data-id="${list.id}" data-name="${list.name}">${list.name}</li>`;
+        }
     });
 
     result_box.innerHTML = "<ul>" + contenido.join('') + "</ul>";
@@ -189,8 +210,14 @@ function selectPais(list) {
 
 function displayBusquedaEstado(params) {
     const result_box_state = document.querySelector('.result-box-state')
+    const estado = document.getElementById('estado');
     const contenido = params.map((list) => {
-        return `<li onclick=selectEstado(this) data-id="${list.id}" data-name="${list.name}">${list.name}</li>`;
+        if (list.name == estado.value) {
+            return estado.setAttribute('data-id', list.id);
+        } else {
+            return `<li onclick=selectEstado(this) data-id="${list.id}" data-name="${list.name}">${list.name}</li>`;
+        }
+
     });
     result_box_state.innerHTML = "<ul>" + contenido.join('') + "</ul>";
 }
@@ -215,25 +242,30 @@ function selectCiudad(list) {
     const result_box_city = document.querySelector('.result-box-city')
     const ciudad = document.getElementById('ciudad');
 
-    const StateName = list.getAttribute('data-name');
-    const StateId = list.getAttribute('data-id');
+    const CityName = list.getAttribute('data-name');
+    const CityId = list.getAttribute('data-id');
 
-    ciudad.value = list.innerHTML;
+    ciudad.value = CityName;
 
-    ciudad.setAttribute('data-id', StateId)
+    ciudad.setAttribute('data-id', CityId)
 
     result_box_city.innerHTML = '';
     result_box_city.style.display = 'none'
-    buscarCiudad(StateId, StateName)
+    buscarCiudad(CityId, CityName)
 }
 
 function displayBusquedaCiudad(params) {
+    const ciudad = document.getElementById('ciudad');
     const result_box_city = document.querySelector('.result-box-city')
     const contenido = params.map((list) => {
-        return `<li onclick=selectCiudad(this) data-id="${list.id}" data-name="${list.name}">${list.name}</li>`;
+        if (list.name == ciudad.value) {
+            return ciudad.setAttribute('data-id', list.id);
+        } else {
+            return `<li onclick=selectCiudad(this) data-id="${list.id}" data-name="${list.name}">${list.name}</li>`;
+        }
+
     });
     result_box_city.innerHTML = "<ul>" + contenido.join('') + "</ul>";
 }
-
 
 
