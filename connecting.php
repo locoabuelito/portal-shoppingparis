@@ -1,7 +1,7 @@
 <?php
 
-session_start();
-
+require __DIR__ . '/vendor/autoload.php';
+require_once 'db/db_conn.php';
 $subida     = 5120;
 $bajada     = 10240;
 
@@ -21,14 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$pais            = isset($_POST['pais_name']) ? $_POST['pais_name'] : '';
-$estado          = isset($_POST['estado_name']) ? $_POST['estado_name'] : '';
-$ciudad          = isset($_POST['ciudad_name']) ? $_POST['ciudad_name'] : '';
+$pais            = isset($_POST['pais']) ? $_POST['pais'] : '';
+$estado          = isset($_POST['estado']) ? $_POST['estado'] : '';
+$ciudad          = isset($_POST['ciudad']) ? $_POST['ciudad'] : '';
 $mac_user        = isset($_SESSION['id']) ? $_SESSION['id'] : '';
 $mac_ap          = isset($_SESSION['ap']) ? $_SESSION['ap'] : '';
 
-require __DIR__ . '/vendor/autoload.php';
-require_once 'db/db_conn.php';
+
 
 $duration = 480; //Duration of authorization in minutes
 $site_id = 'mnvfpsky'; //Site ID found in URL (https://1.1.1.1:8443/manage/site/<site_ID>/devices/1/50)

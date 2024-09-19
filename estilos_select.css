@@ -245,23 +245,7 @@ body {
     margin-top: 15px;
     gap: 3px;
 }
-.form .pais {
-    display: flex;
-    justify-content: start;
-    gap: 10px;
-}
 
-.form .estado {
-    display: flex;
-    justify-content: start;
-    gap: 10px;
-}
-
-.form .ciudad {
-    display: flex;
-    justify-content: start;
-    gap: 10px;
-}
 .form .pais select {
     border-radius: 10px;
 }
@@ -292,14 +276,12 @@ body {
     background: rgb(57, 57, 59);
 }
 
-
-
 .form .container-policy {
     display: flex;
     justify-content: center;
     gap: 5px;
     font-weight: 700;
-    margin-top: 20px;
+    margin-bottom: 5px;
 }
 
 /* Modal styles */
