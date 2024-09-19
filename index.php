@@ -1,11 +1,13 @@
 <?php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 //Get the MAC addresses of AP and user
 
-$_SESSION["id"] = $_GET["id"];
-$_SESSION["ap"] = $_GET["ap"];
+$_SESSION["id"] = isset($_GET["id"]) ? $_GET["id"] : '';
+$_SESSION["ap"] = isset($_GET["ap"]) ? $_GET["ap"] : '';
 
 ?>
 
@@ -17,7 +19,7 @@ $_SESSION["ap"] = $_GET["ap"];
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>WiFi Shopping Paris</title>
 	<link rel="icon" type="image/x-icon" href="./assets/img/favicon-256x256.png">
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="estilos_select.css">
 </head>
 
 <body>
@@ -55,24 +57,30 @@ $_SESSION["ap"] = $_GET["ap"];
 					</div>
 				</div>
 			</div>
-			<div class="input-box address">
-				<label>Procedencia</label>
-				<input type="text" id="pais" name="pais" placeholder="Pais" required  />
-				<div class=result-box>
+			<div class="main-box">
+				<div class="label-box">
+					<label for="pais">País</label>
+					<label for="estado">Estado</label>
+					<label for="ciudad">Ciudad</label>
+				</div>
+				<div class="select-box">
 					
-				</div> 
+					<select name="pais_id" id="pais" data-label="país" required>
+						<option value="">Seleccionar País</option>
+					</select>
+					<input type="hidden" name="pais_name" id="pais_name" />
 				
-				<input type="text" id="estado" name="estado" placeholder="Estado" required  />
-				<div class=result-box-state>
+					<select name="estado_id" id="estado" data-label="estado" required>
+					</select>
+					<input type="hidden" name="estado_name" id="estado_name" />
+					
+					<select name="ciudad_id" id="ciudad" data-label="ciudad" required>
+					</select>
+					<input type="hidden" name="ciudad_name" id="ciudad_name" />
 					
 				</div>
-				
-				<input type="text" id="ciudad" name="ciudad" placeholder="Ciudad" required  />
-				<div class=result-box-city>
-					
-				</div>
-				
 			</div>
+			
 			<!-- Modal -->
 			<div class="container-policy">
 				<label for="check-policy">Terminos de uso del WiFi Shopping Paris</label>
@@ -129,7 +137,7 @@ $_SESSION["ap"] = $_GET["ap"];
 
 
 	</section>
-	<script defer src="js/index.js"></script>
+	<script defer src="js/select.js"></script>
 </body>
 
 </html>

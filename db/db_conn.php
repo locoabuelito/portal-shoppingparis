@@ -1,6 +1,7 @@
 <?php 
-    session_start();
-
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
     require_once dirname(__DIR__) . '/vendor/autoload.php';
     use Dotenv\Dotenv;
@@ -64,16 +65,16 @@ function insertar ($fullname, $email, $fec_nacimiento, $sexo, $pais, $estado, $c
 
         $sql = "INSERT INTO $DB_TABLES ($DB_USER_FULL_NAME, $DB_USER_EMAIL, $DB_USER_DATE_LOGIN, $DB_USER_FEC_NACIMI, $DB_USER_SEXO, 
         $DB_USER_PAIS, $DB_USER_ESTADO, $DB_USER_CIUDAD, $DB_USER_MAC_USER, $DB_USER_MAC_AP) 
-        VALUES (:fullname, :email, CURRENT_TIMESTAMP, :fec_nacimiento, :sexo, :pais, :estado, :ciudad, :mac_user, :mac_ap);";
+        VALUES (:fullname, :email, CURRENT_TIMESTAMP, :fec_nacimiento, :sexo, :pais_name, :estado_name, :ciudad_name, :mac_user, :mac_ap);";
 
         $stmt = $conexion->prepare($sql);
         $stmt->bindValue(':fullname', $fullname, PDO::PARAM_STR);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->bindValue(':fec_nacimiento', $fec_nacimiento, PDO::PARAM_STR);
         $stmt->bindValue(':sexo', $sexo, PDO::PARAM_STR);
-        $stmt->bindValue(':pais', $pais, PDO::PARAM_STR);
-        $stmt->bindValue(':estado', $estado, PDO::PARAM_STR);
-        $stmt->bindValue(':ciudad', $ciudad, PDO::PARAM_STR);
+        $stmt->bindValue(':pais_name', $pais, PDO::PARAM_STR);
+        $stmt->bindValue(':estado_name', $estado, PDO::PARAM_STR);
+        $stmt->bindValue(':ciudad_name', $ciudad, PDO::PARAM_STR);
         $stmt->bindValue(':mac_user', $mac_user, PDO::PARAM_STR);
         $stmt->bindValue(':mac_ap', $mac_ap, PDO::PARAM_STR);
 

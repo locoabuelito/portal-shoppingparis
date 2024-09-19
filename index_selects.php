@@ -17,7 +17,7 @@ $_SESSION["ap"] = $_GET["ap"];
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>WiFi Shopping Paris</title>
 	<link rel="icon" type="image/x-icon" href="./assets/img/favicon-256x256.png">
-	<link rel="stylesheet" href="estilos_select.css">
+	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -55,28 +55,24 @@ $_SESSION["ap"] = $_GET["ap"];
 					</div>
 				</div>
 			</div>
-			<div class="select-box">
-				<div class="pais">
-					<label for="pais">País</label>
-					<select name="pais_id" id="pais" data-label="país" require>
-						<option value="">Seleccionar País</option>
-					</select>
-					<input type="hidden" name="pais_name" id="pais_name" />
+			<div class="input-box address">
+				<label>Procedencia</label>
+				<input type="text" id="pais" name="pais" placeholder="Pais" required  />
+				<div class=result-box>
+					
+				</div> 
+				
+				<input type="text" id="estado" name="estado" placeholder="Estado" required  />
+				<div class=result-box-state>
+					
 				</div>
-				<div class="estado">
-					<label for="estado">Estado</label>
-					<select name="estado_id" id="estado" data-label="estado" require>
-					</select>
-					<input type="hidden" name="estado_name" id="estado_name" />
+				
+				<input type="text" id="ciudad" name="ciudad" placeholder="Ciudad" required  />
+				<div class=result-box-city>
+					
 				</div>
-				<div class="ciudad">
-					<label for="ciudad">Ciudad</label>
-					<select name="ciudad_id" id="ciudad" data-label="ciudad" require>
-					</select>
-					<input type="hidden" name="ciudad_name" id="ciudad_name" />
-				</div>
+				
 			</div>
-			
 			<!-- Modal -->
 			<div class="container-policy">
 				<label for="check-policy">Terminos de uso del WiFi Shopping Paris</label>

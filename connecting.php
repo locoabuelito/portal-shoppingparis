@@ -1,5 +1,7 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require __DIR__ . '/vendor/autoload.php';
 require_once 'db/db_conn.php';
 $subida     = 5120;
@@ -21,9 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$pais            = isset($_POST['pais']) ? $_POST['pais'] : '';
-$estado          = isset($_POST['estado']) ? $_POST['estado'] : '';
-$ciudad          = isset($_POST['ciudad']) ? $_POST['ciudad'] : '';
+$pais            = isset($_POST['pais_name']) ? $_POST['pais_name'] : '';
+$estado          = isset($_POST['estado_name']) ? $_POST['estado_name'] : '';
+$ciudad          = isset($_POST['ciudad_name']) ? $_POST['ciudad_name'] : '';
 $mac_user        = isset($_SESSION['id']) ? $_SESSION['id'] : '';
 $mac_ap          = isset($_SESSION['ap']) ? $_SESSION['ap'] : '';
 

@@ -87,11 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const paisId = event.target.value;
         const paisName = event.target.options[event.target.selectedIndex].text;
         paisNameInput.value = paisName;
+        
         if (paisId) {
             loadEstados(paisId);
         } else {
-            estadoSelect.innerHTML = '<option value="">Seleccionar estado</option>';
-            ciudadSelect.innerHTML = '<option value="">Seleccionar ciudad</option>';
+            estadoSelect.innerHTML = '<option value="">Seleccionar Estado</option>';
+            ciudadSelect.innerHTML = '<option value="">Seleccionar Ciudad</option>';
         }
     });
 
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (estadoId) {
             loadCiudades(estadoId);
         } else {
-            ciudadSelect.innerHTML = '<option value="">Seleccionar ciudad</option>';
+            ciudadSelect.innerHTML = '<option value="">Seleccionar Ciudad</option>';
         }
     });
 

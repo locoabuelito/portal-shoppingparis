@@ -55,6 +55,8 @@ body {
 } */
 
 .form {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     margin-top: 10px;
 }
@@ -62,7 +64,6 @@ body {
 .form .result-box {
     height: auto;
     width: auto;
-    z-index: 10;
     border-radius: 5px;
     color: #707070;
 }
@@ -73,7 +74,6 @@ body {
     overflow: scroll;
     overflow-x: hidden;
     scrollbar-width: thin;
-    z-index: 10;
     border-radius: 5px;
     color: #707070;
 }
@@ -84,7 +84,6 @@ body {
     overflow: scroll;
     overflow-x: hidden;
     scrollbar-width: thin;
-    z-index: 10;
     border-radius: 5px;
     color: #707070;
 }
@@ -94,7 +93,6 @@ body {
     margin-top: -10px;
     width: 100%;
     border-radius: 5px;
-    z-index: 10;
 
 }
 
@@ -103,7 +101,6 @@ body {
     margin-top: -10px;
     width: 100%;
     border-radius: 5px;
-    z-index: 10;
 
 }
 
@@ -112,7 +109,6 @@ body {
     margin-top: -10px;
     width: 100%;
     border-radius: 5px;
-    z-index: 10;
 
 }
 
@@ -188,7 +184,7 @@ body {
     outline: none;
     font-size: 1rem;
     color: #707070;
-    margin-top: 8px;
+    margin-top: 4px;
     border: 1px solid #ddd;
     border-radius: 6px;
     padding: 0 15px;
@@ -206,14 +202,14 @@ body {
 }
 
 .form .gender-box {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .gender-box h3 {
     color: #333;
     font-size: 1rem;
     font-weight: 400;
-    margin-bottom: 8px;
+    margin-bottom: -5px;
 }
 
 .form :where(.gender-option, .gender) {
@@ -240,23 +236,29 @@ body {
 }
 
 .select-box {
+    width: 40%;
+    margin-top: 5px;
+    /* background-color: red; */
+}
+
+.main-box {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.label-box{
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
-    gap: 3px;
+    margin-top: 5px;
+    /* background-color: burlywood; */
+}
+.form select {
+    border-radius: 10px;
+    width: 100%;
+    /* background-color: blue; */
 }
 
-.form .pais select {
-    border-radius: 10px;
-}
-
-.form .estado select {
-    border-radius: 10px;
-}
-
-.form .ciudad select {
-    border-radius: 10px;
-}
 
 .form .button {
     height: 55px;
@@ -281,7 +283,7 @@ body {
     justify-content: center;
     gap: 5px;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin: 10px 0 0;
 }
 
 /* Modal styles */
@@ -359,11 +361,61 @@ body {
 
 /*Responsive*/
 @media screen and (max-width: 500px) {
+
+    .input-box {
+        margin: 5px 0 5px;
+    }
+
+    .input-box label {
+        font-size: 1.3rem;
+    }
+
+    .form :where(.input-box input) {
+        font-size: 1.18rem;
+        padding: 0 5px;
+    }
+
     .form .column {
         flex-wrap: wrap;
     }
 
     .form :where(.gender-option, .gender) {
         row-gap: 15px;
+    }
+
+    .gender-box h3 {
+        font-size: 1.18rem;
+        margin-bottom: 1px;
+    }
+    
+    .gender label {
+        font-size: 1.1rem;
+    }
+
+    .form .gender-box {
+        margin-top: 10px;
+    }
+
+    .label-box label{
+        margin: 0 0 6px;
+        font-size: 1.4rem;
+    }
+
+    .select-box {
+        width: 70%;
+    }
+    .select-box select {
+        
+        font-size: 1.18rem;
+        margin: 0 0 6px;
+    }
+
+    .form .container-policy {
+        font-size: 1.18rem;
+        margin: 20px 0 5px;
+    }
+
+    .form .button {
+        font-size: 1.7rem;
     }
 }
